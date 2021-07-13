@@ -25,7 +25,7 @@ This application has analytics built in which is used to help the developers mak
 
 # Installation
 
-Download and install the respective build for your OS from the [releases](https://github.com/oof2510/ElectronPlayer/releases) page, the most recent successful build artifact from the [Actions](https://github.com/oof2510/electro player/actions) tab, or build yourself.
+Download and install the respective build for your OS from the [releases](https://github.com/oof2510/ElectronPlayer/releases) page, the most recent successful build artifact from the [Actions](https://github.com/oof2510/electronplayer/actions) tab, or build yourself.
 
 # Building
 ```bash
