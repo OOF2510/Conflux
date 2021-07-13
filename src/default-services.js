@@ -97,10 +97,47 @@ module.exports = [
   },
   {
     name: 'Spotify',
+    hidden: true,
     logo: 'services/spotify.svg',
     url: 'https://open.spotify.com',
     color: '#1DB954',
     style: {},
     permissions: []
-  }
+  },
+  {
+    name: 'Vimeo',
+    hidden: true,
+    logo: 'services/vimeo.png',
+    url: 'https://vimeo.com/log_in',
+    color: '#86C9EF',
+    style: {},
+    permissions: []
+  },
+  {
+    name: 'Youtube Kids',
+    hidden: true,
+    logo: 'services/youtube-kids.svg',
+    url: 'https://www.youtubekids.com/',
+    color: '#FF0000',
+    style: {},
+    permissions: []
+  },
+  {
+    name: 'TikTok',
+    hidden: true,
+    logo: 'services/tiktok.svg',
+    url: 'https://www.tiktok.com/',
+    color: '#FFFFFF',
+    style: {},
+    permissions: []
+  },
+  {
+    name: 'Pluto TV',
+    hidden: true,
+    logo: 'services/pluto-tv.png',
+    url: ' https://pluto.tv/en/live-tv/',
+    color: '#000000',
+    style: {},
+    permissions: []
+  },
 ];
