@@ -1,6 +1,5 @@
 appId: xyz.simp-bot.ElectronPlayer
 artifactName: ${name}-v${version}_${os}-${arch}.${ext}
-compression: maximum
 asar: true
 mac:
   category: public.app-category.entertainment
