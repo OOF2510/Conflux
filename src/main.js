@@ -239,113 +239,113 @@ async function createWindow() {
       return callback(false);
     }
   );
+}
 
-  // This method is called when the broswer window's dom is ready
-  // it is used to inject the header if pictureInPicture mode and
-  // hideWindowFrame are enabled.
-  function broswerWindowDomReady() {
-    if (
-      store.get("options.pictureInPicture") ||
-      store.get("options.hideWindowFrame")
-    ) {
-      // TODO: This is a temp fix and a propper fix should be developed
-      if (mainWindow != null) {
-        mainWindow.webContents.executeJavaScript(headerScript);
-      }
+// This method is called when the broswer window's dom is ready
+// it is used to inject the header if pictureInPicture mode and
+// hideWindowFrame are enabled.
+function broswerWindowDomReady() {
+  if (
+    store.get("options.pictureInPicture") ||
+    store.get("options.hideWindowFrame")
+  ) {
+    // TODO: This is a temp fix and a propper fix should be developed
+    if (mainWindow != null) {
+      mainWindow.webContents.executeJavaScript(headerScript);
     }
   }
+}
 
-  // Run when window is closed. This cleans up the mainWindow object to save resources.
-  function mainWindowClosed() {
-    mainWindow = null;
+// Run when window is closed. This cleans up the mainWindow object to save resources.
+function mainWindowClosed() {
+  mainWindow = null;
+}
+
+// This method will be called when Electron has finished
+// initialization and is ready to create browser windows.
+// The timeout fixes the trasparent background on Linux ???? why
+app.on("ready", () => setTimeout(createWindow, 500));
+
+// This is a custom event that is used to relaunch the application.
+// It destroys and recreates the broswer window. This is used to apply
+// settings that Electron doesn't allow to be changed on an active
+// broswer window.
+app.on("relaunch", () => {
+  console.log("Relaunching The Application!");
+
+  // Store details to remeber when relaunched
+  if (mainWindow.getURL() != "") {
+    store.set("relaunch.toPage", mainWindow.getURL());
+  }
+  store.set("relaunch.windowDetails", {
+    position: mainWindow.getPosition(),
+    size: mainWindow.getSize(),
+  });
+
+  // Destory The BroswerWindow
+  mainWindow.webContents.removeListener("dom-ready", broswerWindowDomReady);
+
+  // Remove App Close Listener
+  mainWindow.removeListener("closed", mainWindowClosed);
+
+  // Close App
+  mainWindow.close();
+  mainWindow = undefined;
+
+  // Create a New BroswerWindow
+  createWindow();
+});
+
+// Chnage the windows url when told to by the ui
+ipcMain.on("open-url", (e, service) => {
+  console.log("Openning Service " + service.name);
+  mainWindow.webContents.userAgent = service.userAgent
+    ? service.userAgent
+    : defaultUserAgent;
+  mainWindow.loadURL(service.url);
+});
+
+// Disable fullscreen when button pressed
+ipcMain.on("exit-fullscreen", (e) => {
+  if (store.get("options.pictureInPicture")) {
+    store.delete("options.pictureInPicture");
+  } else if (store.get("options.hideWindowFrame")) {
+    store.delete("options.hideWindowFrame");
   }
 
-  // This method will be called when Electron has finished
-  // initialization and is ready to create browser windows.
-  // The timeout fixes the trasparent background on Linux ???? why
-  app.on("ready", () => setTimeout(createWindow, 500));
+  // Relaunch
+  app.emit("relaunch");
+});
 
-  // This is a custom event that is used to relaunch the application.
-  // It destroys and recreates the broswer window. This is used to apply
-  // settings that Electron doesn't allow to be changed on an active
-  // broswer window.
-  app.on("relaunch", () => {
-    console.log("Relaunching The Application!");
+// Quit when all windows are closed.
+app.on("window-all-closed", () => {
+  if (process.platform !== "darwin") {
+    app.quit();
+  }
+});
 
-    // Store details to remeber when relaunched
-    if (mainWindow.getURL() != "") {
-      store.set("relaunch.toPage", mainWindow.getURL());
-    }
-    store.set("relaunch.windowDetails", {
-      position: mainWindow.getPosition(),
-      size: mainWindow.getSize(),
-    });
-
-    // Destory The BroswerWindow
-    mainWindow.webContents.removeListener("dom-ready", broswerWindowDomReady);
-
-    // Remove App Close Listener
-    mainWindow.removeListener("closed", mainWindowClosed);
-
-    // Close App
-    mainWindow.close();
-    mainWindow = undefined;
-
-    // Create a New BroswerWindow
+// On macOS it's common to re-create a window in the app when the
+// dock icon is clicked and there are no other windows open.
+app.on("activate", () => {
+  if (mainWindow === null) {
     createWindow();
-  });
+  }
+});
 
-  // Chnage the windows url when told to by the ui
-  ipcMain.on("open-url", (e, service) => {
-    console.log("Openning Service " + service.name);
-    mainWindow.webContents.userAgent = service.userAgent
-      ? service.userAgent
-      : defaultUserAgent;
-    mainWindow.loadURL(service.url);
-  });
+/* Restrict Electrons APIs In Renderer Process For Security */
 
-  // Disable fullscreen when button pressed
-  ipcMain.on("exit-fullscreen", (e) => {
-    if (store.get("options.pictureInPicture")) {
-      store.delete("options.pictureInPicture");
-    } else if (store.get("options.hideWindowFrame")) {
-      store.delete("options.hideWindowFrame");
-    }
+function rejectEvent(event) {
+  event.preventDefault();
+}
 
-    // Relaunch
-    app.emit("relaunch");
-  });
-
-  // Quit when all windows are closed.
-  app.on("window-all-closed", () => {
-    if (process.platform !== "darwin") {
-      app.quit();
-    }
-  });
-
-  // On macOS it's common to re-create a window in the app when the
-  // dock icon is clicked and there are no other windows open.
-  app.on("activate", () => {
-    if (mainWindow === null) {
-      createWindow();
-    }
-  });
-
-  /* Restrict Electrons APIs In Renderer Process For Security */
-
-  function rejectEvent(event) {
+const allowedGlobals = new Set(["services"]);
+app.on("remote-get-global", (event, webContents, globalName) => {
+  if (!allowedGlobals.has(globalName)) {
     event.preventDefault();
   }
-
-  const allowedGlobals = new Set(["services"]);
-  app.on("remote-get-global", (event, webContents, globalName) => {
-    if (!allowedGlobals.has(globalName)) {
-      event.preventDefault();
-    }
-  });
-  app.on("remote-require", rejectEvent);
-  app.on("remote-get-builtin", rejectEvent);
-  app.on("remote-get-current-window", rejectEvent);
-  app.on("remote-get-current-web-contents", rejectEvent);
-  app.on("remote-get-guest-web-contents", rejectEvent);
-}
+});
+app.on("remote-require", rejectEvent);
+app.on("remote-get-builtin", rejectEvent);
+app.on("remote-get-current-window", rejectEvent);
+app.on("remote-get-current-web-contents", rejectEvent);
+app.on("remote-get-guest-web-contents", rejectEvent);
