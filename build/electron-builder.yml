@@ -1,4 +1,4 @@
-appId: xyz.simp-bot.ElectronPlayer
+appId: xyz.simp-bot.Conflux
 artifactName: ${name}-v${version}_${os}-${arch}.${ext}
 asar: true
 mac:

@@ -4,15 +4,15 @@ and exit from frameless window on linux which were
 the frameless window hides the settings menu.
 */
 
-console.log('ElectronPlayer: Injected Header');
+console.log('Conflux: Injected Header');
 
 document.body.insertAdjacentHTML(
   'beforeend',
   `
-    <div class="ElectronPlayer-topbar"></div>
-    <span class="ElectronPlayer-exit-btn" onclick="ipc.send('exit-fullscreen')">&times;</span>
+    <div class="Conflux-topbar"></div>
+    <span class="Conflux-exit-btn" onclick="ipc.send('exit-fullscreen')">&times;</span>
     <style>
-        .ElectronPlayer-topbar {
+        .Conflux-topbar {
           position: fixed;
           top: 0;
           left: 0;
@@ -27,11 +27,11 @@ document.body.insertAdjacentHTML(
           -webkit-app-region: drag;
         }
 
-        .ElectronPlayer-topbar:hover {
+        .Conflux-topbar:hover {
           opacity: 1;
         }
 
-        .ElectronPlayer-exit-btn {
+        .Conflux-exit-btn {
           position: fixed;
           top: 0;
           left: 0;
@@ -46,7 +46,7 @@ document.body.insertAdjacentHTML(
           -webkit-app-region: no-drag;
         }
 
-        .ElectronPlayer-exit-btn:hover {
+        .Conflux-exit-btn:hover {
           color: white;
         }
 

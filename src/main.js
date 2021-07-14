@@ -20,10 +20,6 @@ let mainWindow; // Global Windows Object
 const menu = require('./menu');
 const store = new Store();
 
-// Analytics endpoint
-const simpleAnalyticsEndpoint = "https://esa.otbeaumont.me/api";
-let defaultUserAgent;
-
 async function createWindow() {
   // Create the browser window.
   mainWindow = new BrowserWindow({
@@ -237,40 +233,6 @@ async function createWindow() {
       return callback(false);
     }
   );
-
-  // Analytics
-  // Simple Analytics is used which protects the users privacy. This tracking allow the developers to build
-  // a better product with more insight into what devices it is being used on so better testing can be done.
-  let unique = false;
-  if(!store.get('_do_not_edit___date_')) {
-    store.set('_do_not_edit___date_', (new Date()).getTime())
-    unique = true;
-  } else {
-    let now = new Date();
-    let lastPing = new Date(new Date(store.get('_do_not_edit___date_')));
-    if (lastPing.getFullYear() !== now.getFullYear() || lastPing.getMonth() !== now.getMonth() || lastPing.getDate() !== now.getDate()) {
-      store.set('_do_not_edit___date_', now.getTime())
-      unique = true;
-    }
-  }
-
-  fetch(simpleAnalyticsEndpoint, {
-      method: 'POST',
-      headers: {
-        "User-Agent": "ElectronPlayer",
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-          url: "https://electronplayer.otbeaumont.me/" + store.get('version'),
-          ua: mainWindow.webContents.userAgent,
-          width: mainWindow.getSize()[0],
-          unique: unique,
-          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
-          urlReferrer: process.platform
-      })
-  })
-}
 
 // This method is called when the broswer window's dom is ready
 // it is used to inject the header if pictureInPicture mode and

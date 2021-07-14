@@ -1,14 +1,14 @@
-## ElectronPlayer
+# Conflux
 
-[![Build](https://github.com/OOF2510/ElectronPlayer/actions/workflows/build.yml/badge.svg)](https://github.com/OOF2510/ElectronPlayer/actions/workflows/build.yml)
+[![Build](https://github.com/OOF2510/Conflux/actions/workflows/build.yml/badge.svg)](https://github.com/OOF2510/Conflux/actions/workflows/build.yml)
 
 An Electron Based Web Video Services Player. Supporting Netflix, Youtube, Twitch, Floatplane, Hulu, Amazon Prime Video And More. This is the successor to [Netflix-Desktop](https://github.com/oscartbeaumont/Netflix-Desktop).
 
-![ElectronPlayer Menu](docs/ElectronPlayer.png)
+![Conflux Menu](docs/Conflux.png)
 
 _The app's main menu interface_
 
-# Features
+## Features
 
 - Multiple Streaming Services Support (JSON Configuration to add extra)
 - Adblock
@@ -19,32 +19,28 @@ _The app's main menu interface_
 - Rough Mac Picture in Picture Support (Floating Window, Above All Desktop and Fullscreen Applications)
 - Full Screen Window on Startup
 
-# Analytics
+## Installation
 
-This application has analytics built in which is used to help the developers make a better product. [Simple Analytics](https://simpleanalytics.com) was chosen due to their strong views on keeping users private. They are also GDPR, CCPA, & PECR compliant. The data collected by the app can be viewed by anyone [here](https://simpleanalytics.com/electronplayer.otbeaumont.me).
+Download and install the respective build for your OS from the [releases](https://github.com/oof2510/Conflux/releases) page, the most recent successful build artifact from the [Actions](https://github.com/oof2510/Conflux/actions) tab, or build yourself.
 
-# Installation
-
-Download and install the respective build for your OS from the [releases](https://github.com/oof2510/ElectronPlayer/releases) page, the most recent successful build artifact from the [Actions](https://github.com/oof2510/electronplayer/actions) tab, or build yourself.
-
-# Building
+## Building
 ```bash
-git clone https://github.com/oof2510/ElectronPlayer.git
-cd ElectronPlayer/
+git clone https://github.com/oof2510/Conflux.git
+cd Conflux/
 yarn install
 yarn build
 ```
 
-# Developing
+## Developing
 
 ```bash
-git clone https://github.com/oof2510/ElectronPlayer.git
-cd ElectronPlayer/
+git clone https://github.com/oof2510/Conflux.git
+cd Conflux/
 yarn install
 yarn start
 ```
 
-# Contirbutors
+## Contirbutors
 This repo is a fork of [oscartbeaumont's ElectronPlayer](https://github.com/oscartbeaumont/ElectronPlayer), and would not be possible without it or the contributors to that repo that are listed below.
 
 - [Austin Kregel](https://github.com/austinkregel)

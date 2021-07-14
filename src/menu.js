@@ -62,12 +62,13 @@ module.exports = (store, services, mainWindow, app, defaultUserAgent) => {
 
   return Menu.buildFromTemplate([
     {
-      label: 'ElectronPlayer',
+      label: 'Conflux',
       submenu: [
-        { label: 'ElectronPlayer (' + app.getVersion() + ')', enabled: false },
-        { label: 'Created By Oscar Beaumont', enabled: false },
+        { label: 'Conflux (' + app.getVersion() + ')', enabled: false },
+        { label: 'Developed By OOF2510', enabled: false },
+	{ label  'Forked from oscartbeaumont/ElectronPlayer', enabled: false },
         {
-          label: 'Quit ElectronPlayer',
+          label: 'Quit Conflux',
           accelerator: 'Command+Q', // TODO: Non Mac Shortcut
           click() {
             app.quit();
@@ -336,7 +337,7 @@ module.exports = (store, services, mainWindow, app, defaultUserAgent) => {
           label: 'More Information',
           click() {
             shell.openExternal(
-              'http://github.com/oscartbeaumont/ElectronPlayer'
+              'http://github.com/oof2510/Conflux'
             );
           }
         }
