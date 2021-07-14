@@ -1,6 +1,6 @@
 {
   "name": "conflux",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "An Electron Based Web Video Services Player. Supporting Netflix, Youtube, Twitch, Floatplane And More",
   "main": "src/main.js",
   "scripts": {

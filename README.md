@@ -6,7 +6,7 @@ An Electron Based Web Video Services Player. Supporting Netflix, Youtube, Twitch
 
 ![Conflux Menu](docs/Conflux.png)
 
-_The app's main menu interface_
+_The app's main menu_
 
 ## Features
 
