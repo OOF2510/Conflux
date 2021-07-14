@@ -66,7 +66,7 @@ module.exports = (store, services, mainWindow, app, defaultUserAgent) => {
       submenu: [
         { label: 'Conflux (' + app.getVersion() + ')', enabled: false },
         { label: 'Developed By OOF2510', enabled: false },
-	{ label  'Forked from oscartbeaumont/ElectronPlayer', enabled: false },
+	      { label: 'Forked from oscartbeaumont/ElectronPlayer', enabled: false },
         {
           label: 'Quit Conflux',
           accelerator: 'Command+Q', // TODO: Non Mac Shortcut

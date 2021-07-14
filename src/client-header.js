@@ -4,10 +4,10 @@ and exit from frameless window on linux which were
 the frameless window hides the settings menu.
 */
 
-console.log('Conflux: Injected Header');
+console.log("Conflux: Injected Header");
 
 document.body.insertAdjacentHTML(
-  'beforeend',
+  "beforeend",
   `
     <div class="Conflux-topbar"></div>
     <span class="Conflux-exit-btn" onclick="ipc.send('exit-fullscreen')">&times;</span>

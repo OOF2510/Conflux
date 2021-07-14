@@ -17,7 +17,7 @@ linux:
     - AppImage
     - snap
     - deb
-  icon: build/512x512.png
+  icon: linux_icons
   
 electronDownload:
   mirror: https://github.com/castlabs/electron-releases/releases/download/
