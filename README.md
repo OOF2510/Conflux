@@ -43,3 +43,10 @@ cd ElectronPlayer/
 yarn install
 yarn start
 ```
+
+# Contirbutors
+This repo is a fork of [oscartbeaumont's ElectronPlayer](https://github.com/oscartbeaumont/ElectronPlayer), and would not be possible without it or the contributors to that repo that are listed below.
+
+- [Austin Kregel](https://github.com/austinkregel)
+- [Rasmus Lindroth](https://github.com/RasmusLindroth)
+- [Scrumplex](https://github.com/Scrumplex)
