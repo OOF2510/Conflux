@@ -2,7 +2,7 @@
 
 [![Build](https://github.com/OOF2510/Conflux/actions/workflows/build.yml/badge.svg)](https://github.com/OOF2510/Conflux/actions/workflows/build.yml)
 
-An Electron Based Web Video Services Player. Supporting Netflix, Youtube, Twitch, Floatplane, Hulu, Amazon Prime Video And More. This is the successor to [Netflix-Desktop](https://github.com/oscartbeaumont/Netflix-Desktop).
+An Electron Based Web Video Services Player. Supporting Netflix, Youtube, Twitch, Floatplane, Hulu, Amazon Prime Video And More.
 
 ![Conflux Menu](docs/Conflux.png)
 
