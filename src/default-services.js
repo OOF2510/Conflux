@@ -49,7 +49,7 @@ module.exports = [
     name: "Hulu",
     hidden: true,
     logo: "services/hulu.svg",
-    url: "https://www.hulu.com/",
+    url: "https://www.hulu.com/profiles?next=/",
     color: "#1ce783",
     style: {},
     permissions: [],
