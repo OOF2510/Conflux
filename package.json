@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "test": "echo 'TODO: Tests'",
-    "build": "electron-builder -c build/electron-builder.yml -p never"
+    "build": "electron-builder -c build/electron-builder.yml"
   },
   "repository": "https://github.com/oof2510/Conflux.git",
   "author": "OOF2510 <64423517+OOF2510@users.noreply.github.com>",
