@@ -20,5 +20,4 @@ linux:
   icon: linux_icons
   
 electronDownload:
-  mirror: https://github.com/castlabs/electron-releases/releases/download/
-  
+  mirror: https://github.com/castlabs/electron-releases/releases/download/v
