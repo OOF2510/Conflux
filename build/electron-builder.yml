@@ -2,22 +2,22 @@ appId: xyz.simp-bot.Conflux
 artifactName: ${name}-v${version}_${os}-${arch}.${ext}
 asar: true
 mac:
+  publish:
+    - github
   category: public.app-category.entertainment
 win:
+  publish:
+    - github
   target:
-    - msi
-    - portable
-snap:
-  plugs:
-    - default
-    - screen-inhibit-control
+    - nsis
 linux:
+  publish:
+    - github
   category: Video
   target:
     - AppImage
-    - snap
     - deb
   icon: linux_icons
-  
+
 electronDownload:
   mirror: https://github.com/castlabs/electron-releases/releases/download/v

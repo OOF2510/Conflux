@@ -8,8 +8,8 @@ const fs = require("fs"),
     fullLists,
     Request,
   } = require("@cliqz/adblocker-electron"),
-  fetch = require("node-fetch");
-
+  fetch = require("node-fetch"),
+  { autoUpdater } = require("electron-updater");
 const headerScript = fs.readFileSync(
   path.join(__dirname, "client-header.js"),
   "utf8"
@@ -45,6 +45,8 @@ async function createWindow() {
     backgroundColor: "#00000000",
     fullscreen: store.get("options.launchFullscreen"),
   });
+
+  autoUpdater.checkForUpdatesAndNotify();
 
   defaultUserAgent = mainWindow.webContents.userAgent;
 

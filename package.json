@@ -1,6 +1,6 @@
 {
   "name": "conflux",
-  "version": "3.1.0",
+  "version": "3.2.0",
   "description": "An Electron Based Web Video Services Player. Supporting Netflix, Youtube, Twitch, Floatplane And More",
   "main": "src/main.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "@cliqz/adblocker-electron": "^1.22.2",
     "electron-prompt": "^1.6.2",
     "electron-store": "^8.0.0",
+    "electron-updater": "^4.3.9",
     "node-fetch": "^2.6.1"
   }
 }
