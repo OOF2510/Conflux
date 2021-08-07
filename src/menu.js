@@ -220,7 +220,7 @@ module.exports = (store, services, mainWindow, app, defaultUserAgent) => {
             : false,
         },
         {
-          label: "` Enabled Services",
+          label: "Enabled Services `",
           submenu: enabledServicesMenuItems,
         },
         {
