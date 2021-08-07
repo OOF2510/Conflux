@@ -1,12 +1,12 @@
 {
   "name": "conflux",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "description": "An Electron Based Web Video Services Player. Supporting Netflix, Youtube, Twitch, Floatplane And More",
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
     "test": "echo 'TODO: Tests'",
-    "build": "electron-builder -c build/electron-builder.yml"
+    "build": "electron-builder -c build/electron-builder.yml -p onTag"
   },
   "repository": "https://github.com/oof2510/Conflux.git",
   "author": "OOF2510 <64423517+OOF2510@users.noreply.github.com>",
