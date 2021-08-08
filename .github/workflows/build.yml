@@ -73,3 +73,4 @@ jobs:
             dist/*v*.snap*
             dist/*v*.AppImage*
             dist/*v*.tar*
+            dist/*.yml*
